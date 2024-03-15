@@ -1,0 +1,35 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+h1, h2, h3 {
+    @include m.headings;
+}
+
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3.6rem;
+}
+h3 {
+    font-size: 3rem;
+}
+.text-center {
+    text-align: center;
+}
+
+[class$="__heading"]{ // NG - 1 y 2.
+    @include m.nombre-pagina;
+}
+
+[class$="__descripcion"]{ // NG - 1 y 2.
+    @include m.descripcion-pagina;
+}
+
+/* NOTAS GENERALES
+
+1.- Los selectores de atributos CSS coinciden con los elementos en función de la presencia o el valor de un atributo determinado.
+
+2.- En base a la definicion anterior, la sintaxis permite seleccionar los clases que terminen con el atributo __heading. De esa forma, podemos especificar estilos
+para todos los elementos que finalicen de una misma forma.
+*/

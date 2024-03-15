@@ -1,0 +1,68 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.bloques{
+    @include m.contenedor;
+
+    @include m.tablet{
+        margin-top: 6rem;
+    }
+
+    &__grid{
+        @include m.grid(1, 3rem);
+
+        @include m.desktop{
+            @include m.grid(2, 3rem);
+        }
+    }
+}
+
+.bloque{
+    color: v.$blanco;
+    padding: 3rem;
+    border-radius: 1rem;
+
+    &:nth-child(1){
+        @include m.bg-gradient(#7f009f);
+    }
+
+    &:nth-child(2){
+        @include m.bg-gradient(#00990f);
+    }
+
+    &:nth-child(3){
+        @include m.bg-gradient(#002ac4);
+    }
+    &:nth-child(4){
+        @include m.bg-gradient(#cc0700);
+    }
+
+    &__heading{
+        margin: 2rem 0;
+        text-align: center;
+
+        &--disponibles{
+            margin-bottom: 4rem;
+        }
+    }
+
+    &__texto{
+        font-size: 2rem;
+        font-weight: v.$bold;
+
+        &--ingresos{
+            font-size: 4rem;
+            text-align: center;
+            font-weight: v.$black;
+            margin: 4rem 0 1rem 0;
+        }
+
+        &--disponibles{
+            font-weight: v.$regular;
+        }
+
+        &--span{
+            font-weight: v.$bold;
+        }
+    }
+}

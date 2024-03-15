@@ -1,0 +1,115 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+
+    &__fieldset{
+        border: none;
+        margin-top: 1rem;
+    }
+
+    &__legend{
+        color: darken($color: v.$gris, $amount: 20%) ;
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+
+    &__campo{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    &__contenedor-icono{
+        display: flex;
+        border-radius: .5rem;
+        overflow: hidden;
+    }
+
+    &__icono{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: v.$gris-oscuro;
+        width: 4rem;
+
+        i{
+            color: v.$blanco;
+            font-size: 2rem;
+        }
+    }
+
+    &__label{
+        display: flex;
+        font-size: 1.8rem;
+        color: rgba($color: v.$negro, $alpha: .8);
+    }
+
+    &__input,
+    &__select{
+        padding: 1rem;
+        border: 1px solid darken($color: v.$gris-claro, $amount: 20);
+        border-radius: 1rem;
+
+        &--file{
+            border: none;
+        }
+
+        &--sociales{
+            @extend .formulario__input;
+            flex: 1;
+            border-radius: 0 .5rem .5rem 0;
+        }
+    }
+
+    &__radio{
+        display: flex;
+        gap: 2rem;
+
+
+        &--alinear{
+            display: flex;
+            align-items: center;
+
+            label{
+                margin-right: .5rem;
+            }
+
+            input{
+                margin-top: .3rem;
+            }
+        }
+    }
+
+    &__texto{
+        margin-top: 3rem;
+    }
+
+    &__imagen{
+        max-width: 20rem
+    }
+
+    &__listado{
+        @include m.tags;
+    }
+
+    &__submit{
+        @include m.boton(v.$azul, v.$blanco);
+        width: auto;
+        align-self: flex-start; // NG - 1.
+
+        &--registrar,
+        &--full{
+            width: 100%;
+        }
+    }
+}
+
+/* NOTAS GENERALES
+
+1.- align-self: Alinea los elementos flexibles de la línea flexible actual, reemplazando el valor de align-items. Si el límite transversal de alguno de los
+elementos está definido como auto, el valor de align-self es ignorado.
+*/

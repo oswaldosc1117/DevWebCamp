@@ -1,0 +1,182 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.boletos{
+    &__grid{
+        @include m.contenedor-sm;
+        @include m.grid(1, 5rem);
+        align-items: center;
+        text-align: center;
+
+        @include m.xl_desktop{
+            @include m.contenedor;
+            @include m.grid(3, 1rem);
+        }
+    }
+}
+
+.boleto{
+    max-width: 90%;
+    color: v.$blanco;
+    margin: 0 auto;
+    padding: 6rem;
+    border-radius: 2rem;
+    position: relative;
+
+    &::before,
+    &::after{
+        position: absolute;
+        content: '';
+        background-color: v.$blanco;
+        width: 5rem;
+        height: 5rem;
+        top: calc(50% - 2.5rem);
+    }
+
+    &::before{
+        clip-path: circle(50% at 25% 50%); // NG - 1.
+        left: 0;
+    }
+
+    &::after{
+        clip-path: circle(50% at 75% 50%);
+        right: 0;
+    }
+
+    @include m.tablet{
+        &:nth-child(2){
+            order: -1;
+        }
+    }
+
+    &--presencial{
+        background-color:hsla(178,100%,39%,1);
+        background-image:
+            radial-gradient(at 84% 74%, hsla(209,100%,47%,1) 0px, transparent 50%),
+            radial-gradient(at 58% 45%, hsla(178,100%,39%,1) 0px, transparent 50%),
+            radial-gradient(at 54% 0%, hsla(209,100%,47%,1) 0px, transparent 50%),
+            radial-gradient(at 84% 18%, hsla(178,100%,39%,1) 0px, transparent 50%),
+            radial-gradient(at 6% 8%, hsla(209,100%,47%,1) 0px, transparent 50%),
+            radial-gradient(at 18% 87%, hsla(178,100%,39%,1) 0px, transparent 50%),
+            radial-gradient(at 0% 0%, hsla(209,100%,47%,1) 0px, transparent 50%);
+    }
+
+    &--virtual{
+        background-color: v.$secundario;
+    }
+
+    &--gratis{
+        background-color: v.$azul;
+    }
+
+    &__logo{
+        @include m.logo;
+        @include m.texto-fluido(2rem, 3rem);
+    }
+
+    &__plan{
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: v.$bold;
+        margin: 3rem 0 0 0;
+
+        @include m.tablet{
+            margin-top: 2rem;
+        }
+    }
+
+    &__precio{
+        font-size: 4rem;
+        font-weight: v.$black;
+        margin: 3rem 0 0 0; 
+    }
+
+    &__enlace-contenedor{
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+    }
+
+    &__enlace{
+        @include m.boton(v.$azul, v.$blanco);
+        width: auto;
+    }
+
+    $modificador: &;
+
+    &--acceso{
+        width: 30rem;
+        height: 50rem;
+        padding: 10rem 3rem;
+        text-align: center;
+
+        @include m.tablet{
+            width: 60rem;
+            height: 30rem;
+            padding: 5rem 6rem;
+        }
+
+        #{$modificador}__logo{
+            text-align: center;
+            @include m.texto-fluido(2rem, 3rem);
+
+            @include m.tablet{
+                margin-top: 0;
+            }
+        }
+
+        #{$modificador}__nombre{
+            font-size: 2.4rem;
+            font-weight: v.$black;
+            text-transform: uppercase;
+            
+            @include m.tablet{
+                margin-top: 2rem;
+            }
+        }
+
+        #{$modificador}__codigo{
+            font-size: 4rem;
+            font-weight: v.$bold;
+            position: absolute;
+            bottom: 7rem;
+            left: 0;
+            right: 0;
+
+            @include m.tablet{
+                bottom: 0;
+
+            }
+        }
+    }
+
+    &::before{
+        clip-path: circle(50% at 50% 25%);
+        left: calc(50% - 2.5rem);
+        top: 0;
+
+        @include m.tablet{
+            clip-path: circle(50% at 25% 50%);
+            left: 0;
+            top: calc(50% - 2.5rem);
+        }
+    }
+
+    &::after{
+        clip-path: circle(50% at 50% 75%);
+        left: calc(50% - 2.5rem);
+        top: calc(100% - 5rem);
+
+        @include m.tablet{
+            clip-path: circle(50% at 75% 50%);
+            left: calc(100% - 5rem);
+            top: calc(50% - 2.5rem);
+        }
+    }
+}
+
+/* NOTAS GENERALES
+
+1.- La propiedad CSS clip-path crea una región de recorte que establece qué parte de un elemento debe mostrarse. Se muestran las partes que están dentro de
+la región, mientras que las que están fuera están ocultas.
+*/

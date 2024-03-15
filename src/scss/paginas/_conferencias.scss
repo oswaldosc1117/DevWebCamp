@@ -1,0 +1,133 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.agenda{
+    @include m.contenedor;
+}
+
+.eventos{
+    padding: 0 2rem;
+    $modificador: &;
+
+    &__heading{
+        color: v.$azul;
+        text-align: left;
+        font-size: clamp(2rem, -0.8rem + 8vw, 6rem);
+    }
+
+    &__fecha{
+        color: v.$gris;
+        margin: 3rem 0 1rem 0;
+    }
+
+    &--workshops{
+        #{$modificador}__heading{ // NG - 1.
+            color: v.$secundario;
+        }
+
+        .evento__informacion{
+            background-color: v.$secundario;
+
+            &:hover{
+                background-color: darken($color: v.$secundario, $amount: 10%);
+            }
+        }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev{
+        color: rgba(v.$blanco, .5);
+    }
+}
+
+.evento{
+    &__hora{
+        font-weight: v.$bold;
+    }
+
+    &__informacion{
+        padding: 2rem;
+        border-radius: 1rem;
+        color: v.$blanco;
+        background-color: v.$azul;
+        transition: all .3s ease;
+
+        &:hover{
+            background-color: darken($color: v.$azul, $amount: 10%);
+        }
+    }
+
+    &__nombre{
+        font-size: 2rem;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    &__introduccion{
+        font-size: 1.6rem;
+        display: -webkit-box; // NG - 2 y 3.
+        -webkit-line-clamp: 2; // NG - 4.
+        -webkit-box-orient: vertical; // NG - 5.
+        overflow: hidden;
+    }
+
+    &__autor-info{
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__imagen-autor{
+        width: 5rem;
+        background-color: v.$blanco;
+        border-radius: 50%;
+    }
+
+    &__autor-nombre{
+        font-weight: v.$bold;
+    }
+
+    &__agregar{
+        @include m.boton(v.$blanco, v.$negro);
+        margin-top: 1rem;
+
+        &:hover{
+            color: v.$azul;
+        }
+
+        &:disabled{
+            opacity: .5;
+            cursor: not-allowed;
+
+            &:hover{
+                color: v.$negro;
+            }
+        }
+    }
+
+}
+
+/* NOTAS GENERALES
+
+1.- Interpolación: La interpolación es algo que podemos utilizar casi en cualquier lugar de una hoja de Sass/SCSS para incrustar el resultado de una expresión
+SassScript en CSS, siendo su uso más común el de inyectar valores en Strings. Para ello, debemos encerrar dicha expresión en la sintaxis del ejercicio.
+En este caso, estamos utilizando un modificador (--workshops) directamente sobre el bloque (.eventos) y no sobre un elemento como lo puede ser (__heading).
+Como esto no va a funcionar, es necesario crear una variable dentro del bloque ($modificador) la cual luego introducimos dentro de las llaves antecedidas por
+el numeral seguido por el elemento (__heading) para que pueda funcionar el añadir directamente un modificador sobre el bloque.
+
+2.- WebKit es un framework (marco o interfaz) que proporciona páginas web "bien formadas" basadas es su lenguaje de marcado. El principal navegador que utiliza
+este framework es Safari, aunque también lo hacen muchos otros navegadores web para dispositivos móviles (debido a que WebKit es muy portable y customizable).
+
+3.- La propiedad de CSS -webkit-box especifica como una webkit-box crece para rellenar la caja que los contienen, en la dirección del diseño o esquema (layout) de
+la caja contenedora.
+
+4.- La propiedad CSS -webkit-line-clamp permite limitar el contenido de un bloque al número especificado de líneas.
+
+5.- La propiedad CSS -weblit-box-orient establece si un elemento dispone su contenido de forma horizontal o verticalmente. En este caso, como esta junto con un
+-webkit-line-clamp que establece un numero de lineas, al decirle que es "vertcial", va a tomar las 1eras dos lineas de arriba hacia abajo.
+
+*/
