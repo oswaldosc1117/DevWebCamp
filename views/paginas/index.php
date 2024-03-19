@@ -124,3 +124,5 @@
         <a href="/paquetes" class="boleto__enlace">Ver Paquetes</a>
     </div>
 </section> <!--Cierre de boletos-->
+
+<?php include_once __DIR__ . '/sponsors.php'; ?>

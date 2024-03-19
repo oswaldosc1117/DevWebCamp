@@ -978,6 +978,47 @@ la región, mientras que las que están fuera están ocultas.
   color: #007df4;
 }
 
+.sponsors {
+  width: min(95%, 80rem);
+  margin: 0 auto;
+  margin: 7rem auto 2rem auto;
+}
+.sponsors__grid {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .sponsors__grid {
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.sponsors__contenido {
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border: solid 1px transparent;
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+@media (min-width: 768px) {
+  .sponsors__contenido {
+    height: 20rem;
+  }
+}
+.sponsors__contenido:hover {
+  transform: scale(1.1);
+  box-shadow: 10px 10px 15px #394250;
+}
+.sponsors__imagen {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .formulario {
   display: flex;
   flex-direction: column;

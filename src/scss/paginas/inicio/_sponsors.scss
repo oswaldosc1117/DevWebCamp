@@ -1,0 +1,42 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.sponsors{
+    @include m.contenedor-md;
+    margin: 7rem auto 2rem auto;
+
+
+    &__grid{
+        @include m.grid(2, 4rem);
+        align-items: center;
+
+        @include m.desktop{
+            @include m.grid(3, 4rem);
+        }
+    }
+
+    &__contenido{
+        height: 10rem;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        border: solid 1px transparent;
+        border-radius: 1rem;
+        transition: all .3s ease-in-out;
+
+        @include m.tablet{
+            height: 20rem;
+        }
+
+        &:hover{
+            transform: scale(1.1);
+            box-shadow: 10px 10px 15px darken($color: v.$gris, $amount: 20%);
+        }
+    }
+
+    &__imagen{
+        width: 80%;
+        margin: 0 auto;
+        }
+
+}

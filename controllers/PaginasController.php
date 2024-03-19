@@ -8,6 +8,7 @@ use Model\Horas;
 use Model\Eventos;
 use Model\Ponente;
 use Model\Categorias;
+use Model\Sponsors;
 
 class PaginasController{
 
@@ -45,13 +46,17 @@ class PaginasController{
         // Obtener todos los ponentes.
         $ponentes = Ponente::all();
 
+        // Obtener todos los sponsors.
+        $sponsors = Sponsors::all('ASC');
+
         $router->render('paginas/index', [
             'titulo' => 'Inicio',
             'eventos' => $eventos_formateados,
             'ponentes_total' => $ponentes_total,
             'conferencias_total' => $conferencias_total,
             'workshops_total' => $workshops_total,
-            'ponentes' => $ponentes
+            'ponentes' => $ponentes,
+            'sponsors' => $sponsors
         ]);
     }
 
