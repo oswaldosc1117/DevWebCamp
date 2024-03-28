@@ -22,6 +22,6 @@ usuarios registrados y la ganancia total por la compra de los paquetes
 
 El código proyecto se encuentra albergado en DOM Cloud, tanto el Frontend como el Backend.
 
-link: https://zurmofi.nyc.dom.my.id/ usuario: alba@alba.com clave: 444444
+link: https://kujwuqi.nyc.dom.my.id/ usuario: alba@alba.com clave: 444444
 
 Gracias y feliz día.
